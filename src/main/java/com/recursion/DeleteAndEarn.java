@@ -21,31 +21,25 @@ public class DeleteAndEarn {
      *
      * @param index
      * @return
+     *
+     * GodSend: S[k] = MAX(S[k - 1], S[k - 2] + A[k] * k)
      */
-    private int dp(int index, int[] nums){
-        if(frequency.size()==0) {
-            return nums[index-1];
-        } else {
-            int value = nums[index];
-            int count = 0;
-            if (frequency.containsKey(value)) {
-                count = frequency.get(value);
+    private int dp(int index, int[] set, Map<Integer, Integer> map){
+        if(map.size()==0)
+            return 0;
 
-                if (count > 1) {
-                    frequency.put(value, count - 1);
-                } else if (count == 1) {
-                    frequency.remove(value);
-                }
-                if (frequency.containsKey(value + 1))
-                    frequency.remove(value + 1);
-                if (frequency.containsKey(value - 1))
-                    frequency.remove(value - 1);
+        int value = set[index];
+        if(map.containsKey(value)) {
 
-                return value + dp(index + 1, nums);
-            } else {
-                return dp(index + 1, nums);
-            }
+            if (map.containsKey(value + 1))
+                map.remove(value + 1);
+            if (map.containsKey(value - 1))
+                map.remove(value - 1);
+
+            return value * map.get(value) + dp(index+1, set, map);
         }
+
+        return 0;
     }
 
     public int deleteAndEarn(int[] nums) {
@@ -60,7 +54,16 @@ public class DeleteAndEarn {
         }
         System.out.println(frequency);
 
-        return dp(0, nums);
+        int[] set = new int[frequency.size()];
+        int i=0;
+        for(Map.Entry<Integer, Integer> e : frequency.entrySet()){
+            set[i] = e.getKey();
+        }
+
+        Map<Integer, Integer> map = frequency;
+        System.out.println(dp(0, set, map));
+
+        return 0;
     }
 
     public static void main(String[] args) {
