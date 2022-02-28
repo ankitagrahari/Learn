@@ -7,6 +7,11 @@
       <option name="url" value="https://hcm-cicd.hpeswlab.net/nexus/repository/maven-internal/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="itom-mvn-snapshot" />
       <option name="name" value="ITOM Artifactory Snapshot" />
       <option name="url" value="https://svsartifactory.swinfra.net/artifactory/itom-mvn-snapshot/" />
