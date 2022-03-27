@@ -18,6 +18,7 @@ public class Test {
                 System.out.println(integer);
             }
         };
+        Consumer<Integer> consumer1 = integer -> System.out.println(integer);
 
         Predicate<Integer> predicate = new Predicate<Integer>() {
             @Override
@@ -25,6 +26,7 @@ public class Test {
                 return integer%3==0;
             }
         };//x -> x % 3 == 0;
+        Predicate<Integer> predicate1 = integer -> integer%3==0;
 
         a.stream().filter(predicate).forEach(consumer);
 
@@ -34,6 +36,7 @@ public class Test {
                 return 2*integer;
             }
         };
+        Function<Integer, Integer> function1 = integer -> 2*integer;
         a.stream().map(function).forEach(consumer);
 
         Supplier<List<Integer>> supplier = new Supplier<List<Integer>>() {
@@ -42,6 +45,7 @@ public class Test {
                 return new ArrayList<>();
             }
         };
+        Supplier<List<Integer>> supplier1 = () -> new ArrayList<>();
 
         List<Integer> v = supplier.get(); //acts as Factory
     }
