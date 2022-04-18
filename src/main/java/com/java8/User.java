@@ -12,6 +12,8 @@ public class User {
     private Integer age;
     private List<Privilege> privileges;
 
+    public User(){}
+
     public User(final Long id,
                 final String firstName,
                 final String lastName,
