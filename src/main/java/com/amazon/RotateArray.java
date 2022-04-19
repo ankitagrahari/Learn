@@ -1,6 +1,7 @@
 package com.amazon;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class RotateArray {
 
@@ -16,7 +17,6 @@ public class RotateArray {
             }
             arr[n-1] = temp;
         }
-
         System.out.println(Arrays.toString(arr));
     }
 
@@ -55,6 +55,7 @@ public class RotateArray {
         // Reverse now the entire array
         reverse(arr, 0, n-1);
 
+        System.out.println(Arrays.stream(arr).mapToObj(String::valueOf).collect(Collectors.joining(" ")));
         System.out.println(Arrays.toString(arr));
     }
 
